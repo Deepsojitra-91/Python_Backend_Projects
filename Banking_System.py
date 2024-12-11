@@ -1,20 +1,22 @@
 import pymysql
 
+
 def connect_to_database(use_database=False):
     """Connect to MySQL server. Optionally use the Banking database."""
     if use_database:
         return pymysql.connect(
             host="localhost",
             user="root",
-            password="nslab@60510",
+            password="<YOUR_PASSWORD>",
             database="Banking",
         )
     else:
         return pymysql.connect(
             host="localhost",
             user="root",
-            password="nslab@60510",
+            password="<YOUR_PASSWORD>",
         )
+
 
 def Create_Database():
     """Create the Banking database and Accounts table if they do not exist."""
@@ -33,6 +35,7 @@ def Create_Database():
                    )""")
     connection.commit()
     connection.close()
+
 
 def Create_Account(name, initial_deposit):
     """Create a new account with the specified name and initial deposit."""
@@ -60,6 +63,7 @@ def Create_Account(name, initial_deposit):
 
     connection.close()
 
+
 def View_Balance(account_number):
     """View the balance of a specified account."""
     connection = connect_to_database(use_database=True)
@@ -76,6 +80,7 @@ def View_Balance(account_number):
         print(f"Account balance: ${result[0]:.2f}")
     else:
         print("Account not found")
+
 
 def Deposit(account_number, amount):
     """Deposit an amount into a specified account."""
@@ -103,6 +108,7 @@ def Deposit(account_number, amount):
         print(f"Account balance: ${result[0]:.2f}")
     else:
         print("Account not found")
+
 
 def Withdraw(account_number, amount):
     """Withdraw an amount from a specified account if sufficient balance exists."""
@@ -135,6 +141,7 @@ def Withdraw(account_number, amount):
         print("Account not found")
 
     connection.close()
+
 
 def Main_Menu():
     while True:
@@ -172,7 +179,8 @@ def Main_Menu():
             print("=============================")
             break
 
+
 if __name__ == "__main__":
     print("Initializing Banking System....")
-    Create_Database()  # Ensure the database and table are created
+    Create_Database() 
     Main_Menu()
