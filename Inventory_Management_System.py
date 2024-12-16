@@ -7,7 +7,7 @@ def create_database():
         connection = pymysql.connect(
             host="localhost",
             user="root",  # Replace with your MySQL username
-            password="Deep@$915736"  # Replace with your MySQL password
+            password="YOUR DATABASE PASSOWRD"  # Replace with your MySQL password
         )
         with connection.cursor() as cursor:
             cursor.execute("CREATE DATABASE IF NOT EXISTS inventory_db")
@@ -22,7 +22,7 @@ def connect_to_database():
         connection = pymysql.connect(
             host="localhost",
             user="root",  # Replace with your MySQL username
-            password="Deep@$915736",  # Replace with your MySQL password
+            password="YOUR DATABASE PASSOWRD",  # Replace with your MySQL password
             database="inventory_db"
         )
         return connection
